@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
+const API_BASE = "https://wasteguard-ai-hh4e.onrender.com";
 
 const QUICK_PROMPTS = []
 
@@ -63,7 +64,7 @@ export default function GeminiChat() {
     setMessages(prev => [...prev, { role: 'user', text: msg }])
     setLoading(true)
     try {
-      const res = await fetch('/api/chat', {
+      const res = await fetch(`${API_BASE}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: msg }),

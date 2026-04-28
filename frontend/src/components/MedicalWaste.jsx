@@ -2,6 +2,7 @@ import { useState, useCallback, useRef } from 'react'
 import { CyclicSelect, CyclicList } from '../utils/cyclicScroll.jsx'
 import { BENGALURU_CENTER, getNearestCenters } from '../utils/disposalCenters'
 import NearestCenterMap from './NearestCenterMap'
+const API_BASE = "https://wasteguard-ai-hh4e.onrender.com";
 
 const UNITS = ['units', 'tablets', 'capsules', 'ml', 'mg', 'vials', 'strips', 'bottles']
 const DEMO  = { medicine_name: 'Amoxicillin 500mg', expiry_date: '2025-12-01', quantity: '30', unit: 'capsules' }
@@ -161,7 +162,7 @@ function SingleTab() {
     e.preventDefault()
     setError(''); setResult(null); setLoading(true)
     try {
-      const res  = await fetch('/api/medical-analyze', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) })
+      const res  = await fetch(`${API_BASE}/api/medical-analyze`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) })
       if (!res.ok) throw new Error()
       const data = await res.json()
       setResult(data)
@@ -296,7 +297,7 @@ function BulkTab() {
     const out = []
     for (let i = 0; i < valid.length; i++) {
       try {
-        const res  = await fetch('/api/medical-analyze', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(valid[i]) })
+        const res  = await fetch(`${API_BASE}/api/medical-analyze`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(valid[i]) })
         const data = await res.json()
         out.push({ form: valid[i], result: data })
         const entry = { ...valid[i], risk_level: data.risk_level, analyzed_at: new Date().toLocaleString() }

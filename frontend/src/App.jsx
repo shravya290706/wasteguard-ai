@@ -13,6 +13,7 @@ import LoginPage from './components/LoginPage'
 import Predictions from './components/Predictions'
 import CertificateGenerator from './components/CertificateGenerator'
 import Leaderboard from './components/Leaderboard'
+const API_BASE = "https://wasteguard-ai-hh4e.onrender.com";
 
 const NAV = [
   { id: 'overview',     icon: '🏠',  label: 'Overview'       },
@@ -105,7 +106,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    fetch('/api/stores')
+  fetch(`${API_BASE}/api/stores`)
       .then(r => r.json())
       .then(data => {
         setStores(data.stores || [])

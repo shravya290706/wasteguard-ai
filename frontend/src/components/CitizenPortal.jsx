@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { CyclicSelect } from '../utils/cyclicScroll.jsx'
+const API_BASE = "https://wasteguard-ai-hh4e.onrender.com";
 
 const ISSUE_TYPES = ['Spoiled stock', 'Uncollected redistribution', 'Overstock not reported', 'Other']
 
@@ -16,7 +17,7 @@ export default function CitizenPortal({ stores = [] }) {
     if (!selectedStore) return
     setLoading(true)
     try {
-      await fetch('/api/report', {
+      await fetch(`${API_BASE}/api/report`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -30,7 +31,7 @@ export default function CitizenPortal({ stores = [] }) {
       })
 
       // Fetch summary
-      const sumRes = await fetch('/api/summarize-reports', {
+      const sumRes = await fetch(`${API_BASE}/api/summarize-reports`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ store_id: selectedStore.id }),
