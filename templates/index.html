@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WasteGuard AI</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 40px 16px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #4ade80;
+      letter-spacing: -0.5px;
+    }
+    .header p {
+      color: #94a3b8;
+      margin-top: 6px;
+      font-size: 0.95rem;
+    }
+
+    /* Card */
+    .card {
+      background: #1e2130;
+      border: 1px solid #2d3348;
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    /* Form */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 520px) { .form-grid { grid-template-columns: 1fr; } }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.82rem; font-weight: 600; color: #94a3b8; }
+
+    .form-group input {
+      background: #0f1117;
+      border: 1px solid #2d3348;
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #e2e8f0;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input:focus { border-color: #4ade80; }
+    .form-group input::placeholder { color: #475569; }
+
+    .btn {
+      width: 100%;
+      margin-top: 20px;
+      background: #4ade80;
+      color: #0f1117;
+      border: none;
+      border-radius: 8px;
+      padding: 13px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .btn:hover { background: #22c55e; transform: scale(1.01); }
+
+    /* Risk badge */
+    .risk-badge {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .risk-HIGH   { background: #fee2e2; color: #dc2626; }
+    .risk-MEDIUM { background: #fef3c7; color: #d97706; }
+    .risk-LOW    { background: #dcfce7; color: #16a34a; }
+
+    .risk-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .risk-label { font-size: 0.82rem; color: #94a3b8; }
+
+    /* Result sections */
+    .result-section {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid #2d3348;
+    }
+    .result-section h3 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .result-section p, .result-section pre {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+      font-family: inherit;
+    }
+
+    .section-explanation h3 { color: #60a5fa; }
+    .section-actions h3     { color: #f59e0b; }
+    .section-message h3     { color: #a78bfa; }
+
+    .message-box {
+      background: #0f1117;
+      border: 1px solid #2d3348;
+      border-left: 3px solid #a78bfa;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+    }
+
+    /* Loading spinner */
+    .loading { display: none; text-align: center; padding: 12px 0; color: #94a3b8; font-size: 0.88rem; }
+    .spinner {
+      display: inline-block;
+      width: 18px; height: 18px;
+      border: 2px solid #2d3348;
+      border-top-color: #4ade80;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>♻️ WasteGuard AI</h1>
+    <p>AI-powered food waste detection and redistribution assistant</p>
+  </div>
+
+  <!-- Input Form -->
+  <div class="card">
+    <h2>📦 Product Details</h2>
+    <form method="POST" onsubmit="showLoading()">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Product Name</label>
+          <input type="text" name="product_name" placeholder="e.g. Tomatoes"
+                 value="{{ form_data.get('product_name', '') }}" required/>
+        </div>
+        <div class="form-group">
+          <label>Quantity</label>
+          <input type="text" name="quantity" placeholder="e.g. 50 kg"
+                 value="{{ form_data.get('quantity', '') }}" required/>
+        </div>
+        <div class="form-group">
+          <label>Expiry Days Remaining</label>
+          <input type="number" name="expiry_days" placeholder="e.g. 3" min="0"
+                 value="{{ form_data.get('expiry_days', '') }}" required/>
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" name="location" placeholder="e.g. Mumbai Warehouse"
+                 value="{{ form_data.get('location', '') }}" required/>
+        </div>
+      </div>
+      <button type="submit" class="btn">🔍 Analyze with AI</button>
+      <div class="loading" id="loadingMsg">
+        <span class="spinner"></span> Consulting Gemini AI...
+      </div>
+    </form>
+  </div>
+
+  <!-- Results -->
+  {% if result %}
+  <div class="card">
+    <h2>📊 Analysis Result</h2>
+
+    <!-- Risk Level -->
+    <div class="risk-row">
+      <span class="risk-badge risk-{{ result.risk_level }}">{{ result.risk_level }} RISK</span>
+      <span class="risk-label">
+        {% if result.risk_level == 'HIGH' %}⚠️ Expires within 3 days — act immediately
+        {% elif result.risk_level == 'MEDIUM' %}🕐 Expires within 7 days — plan redistribution
+        {% else %}✅ Sufficient time remaining — monitor closely
+        {% endif %}
+      </span>
+    </div>
+
+    <!-- Explanation -->
+    {% if result.explanation %}
+    <div class="result-section section-explanation">
+      <h3>🔍 Risk Explanation</h3>
+      <p>{{ result.explanation }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Actions -->
+    {% if result.actions %}
+    <div class="result-section section-actions">
+      <h3>⚡ Suggested Actions</h3>
+      <pre>{{ result.actions }}</pre>
+    </div>
+    {% endif %}
+
+    <!-- Redistribution Message -->
+    {% if result.message %}
+    <div class="result-section section-message">
+      <h3>📨 Redistribution Message</h3>
+      <div class="message-box">{{ result.message }}</div>
+    </div>
+    {% endif %}
+
+  </div>
+  {% endif %}
+
+</div>
+
+<script>
+  function showLoading() {
+    document.getElementById('loadingMsg').style.display = 'block';
+  }
+</script>
+</body>
+</html>

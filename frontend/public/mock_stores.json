@@ -1,0 +1,144 @@
+{
+  "stores": [
+    {
+      "id": 1,
+      "name": "Store #1 - Koramangala",
+      "zone": "Zone A",
+      "location": "Koramangala, Bengaluru",
+      "items": [
+        { "name": "Rice", "quantity_kg": 370, "expiry_days": 2, "max_capacity_kg": 400 },
+        { "name": "Wheat", "quantity_kg": 150, "expiry_days": 10, "max_capacity_kg": 200 },
+        { "name": "Sugar", "quantity_kg": 80, "expiry_days": 30, "max_capacity_kg": 100 }
+      ],
+      "past_waste_pattern": "Overstocks rice every October due to delayed distribution",
+      "complaints": 3
+    },
+    {
+      "id": 2,
+      "name": "Store #2 - Indiranagar",
+      "zone": "Zone A",
+      "location": "Indiranagar, Bengaluru",
+      "items": [
+        { "name": "Rice", "quantity_kg": 120, "expiry_days": 5, "max_capacity_kg": 300 },
+        { "name": "Dal", "quantity_kg": 95, "expiry_days": 3, "max_capacity_kg": 100 },
+        { "name": "Oil", "quantity_kg": 40, "expiry_days": 60, "max_capacity_kg": 80 }
+      ],
+      "past_waste_pattern": "Dal frequently expires due to low demand in this area",
+      "complaints": 5
+    },
+    {
+      "id": 3,
+      "name": "Store #3 - Jayanagar",
+      "zone": "Zone B",
+      "location": "Jayanagar, Bengaluru",
+      "items": [
+        { "name": "Rice", "quantity_kg": 200, "expiry_days": 12, "max_capacity_kg": 350 },
+        { "name": "Wheat", "quantity_kg": 180, "expiry_days": 8, "max_capacity_kg": 200 },
+        { "name": "Sugar", "quantity_kg": 60, "expiry_days": 45, "max_capacity_kg": 100 }
+      ],
+      "past_waste_pattern": "Generally well-managed, minor wheat overstock in monsoon",
+      "complaints": 1
+    },
+    {
+      "id": 4,
+      "name": "Store #4 - Rajajinagar",
+      "zone": "Zone B",
+      "location": "Rajajinagar, Bengaluru",
+      "items": [
+        { "name": "Rice", "quantity_kg": 300, "expiry_days": 2, "max_capacity_kg": 400 },
+        { "name": "Dal", "quantity_kg": 55, "expiry_days": 6, "max_capacity_kg": 120 },
+        { "name": "Wheat", "quantity_kg": 190, "expiry_days": 4, "max_capacity_kg": 200 }
+      ],
+      "past_waste_pattern": "Recurring rice waste due to beneficiary migration patterns",
+      "complaints": 7
+    },
+    {
+      "id": 5,
+      "name": "Store #5 - Whitefield",
+      "zone": "Zone C",
+      "location": "Whitefield, Bengaluru",
+      "items": [
+        { "name": "Rice", "quantity_kg": 80, "expiry_days": 15, "max_capacity_kg": 300 },
+        { "name": "Wheat", "quantity_kg": 100, "expiry_days": 20, "max_capacity_kg": 200 },
+        { "name": "Oil", "quantity_kg": 70, "expiry_days": 90, "max_capacity_kg": 80 }
+      ],
+      "past_waste_pattern": "Low waste history, good community engagement",
+      "complaints": 0
+    },
+    {
+      "id": 6,
+      "name": "Store #6 - Hebbal",
+      "zone": "Zone C",
+      "location": "Hebbal, Bengaluru",
+      "items": [
+        { "name": "Rice", "quantity_kg": 250, "expiry_days": 3, "max_capacity_kg": 350 },
+        { "name": "Dal", "quantity_kg": 110, "expiry_days": 7, "max_capacity_kg": 120 },
+        { "name": "Sugar", "quantity_kg": 45, "expiry_days": 25, "max_capacity_kg": 100 }
+      ],
+      "past_waste_pattern": "Dal overstocked due to incorrect demand forecasting",
+      "complaints": 4
+    },
+    {
+      "id": 7,
+      "name": "Store #7 - Yelahanka",
+      "zone": "Zone D",
+      "location": "Yelahanka, Bengaluru",
+      "items": [
+        { "name": "Rice", "quantity_kg": 400, "expiry_days": 1, "max_capacity_kg": 400 },
+        { "name": "Wheat", "quantity_kg": 195, "expiry_days": 2, "max_capacity_kg": 200 },
+        { "name": "Dal", "quantity_kg": 90, "expiry_days": 5, "max_capacity_kg": 120 }
+      ],
+      "past_waste_pattern": "Chronic overstock every month — supply chain mismatch with actual beneficiary count",
+      "complaints": 12
+    },
+    {
+      "id": 8,
+      "name": "Store #8 - Electronic City",
+      "zone": "Zone D",
+      "location": "Electronic City, Bengaluru",
+      "items": [
+        { "name": "Rice", "quantity_kg": 160, "expiry_days": 9, "max_capacity_kg": 300 },
+        { "name": "Wheat", "quantity_kg": 90, "expiry_days": 14, "max_capacity_kg": 200 },
+        { "name": "Oil", "quantity_kg": 30, "expiry_days": 120, "max_capacity_kg": 80 }
+      ],
+      "past_waste_pattern": "Stable distribution, occasional rice surplus in summer",
+      "complaints": 2
+    },
+    {
+      "id": 9,
+      "name": "Store #9 - Banashankari",
+      "zone": "Zone E",
+      "location": "Banashankari, Bengaluru",
+      "items": [
+        { "name": "Rice", "quantity_kg": 220, "expiry_days": 6, "max_capacity_kg": 350 },
+        { "name": "Dal", "quantity_kg": 100, "expiry_days": 4, "max_capacity_kg": 120 },
+        { "name": "Sugar", "quantity_kg": 88, "expiry_days": 18, "max_capacity_kg": 100 }
+      ],
+      "past_waste_pattern": "Sugar frequently near overstock threshold",
+      "complaints": 3
+    },
+    {
+      "id": 10,
+      "name": "Store #10 - Marathahalli",
+      "zone": "Zone E",
+      "location": "Marathahalli, Bengaluru",
+      "items": [
+        { "name": "Rice", "quantity_kg": 140, "expiry_days": 11, "max_capacity_kg": 300 },
+        { "name": "Wheat", "quantity_kg": 170, "expiry_days": 7, "max_capacity_kg": 200 },
+        { "name": "Dal", "quantity_kg": 50, "expiry_days": 22, "max_capacity_kg": 120 }
+      ],
+      "past_waste_pattern": "Wheat demand drops post-harvest season causing surplus",
+      "complaints": 2
+    }
+  ],
+  "ngos": [
+    { "name": "Akshaya Patra", "location": "Koramangala, Bengaluru", "distance_km": 2.3, "reliability": 95, "capacity_kg": 500, "availability": true },
+    { "name": "Robin Hood Army", "location": "Rajajinagar, Bengaluru", "distance_km": 4.1, "reliability": 88, "capacity_kg": 300, "availability": true },
+    { "name": "No Food Waste", "location": "Indiranagar, Bengaluru", "distance_km": 1.8, "reliability": 92, "capacity_kg": 400, "availability": true },
+    { "name": "Feeding India", "location": "Jayanagar, Bengaluru", "distance_km": 3.5, "reliability": 85, "capacity_kg": 350, "availability": false },
+    { "name": "Annadaata Trust", "location": "Whitefield, Bengaluru", "distance_km": 5.2, "reliability": 90, "capacity_kg": 250, "availability": true },
+    { "name": "Action Against Hunger", "location": "Hebbal, Bengaluru", "distance_km": 2.8, "reliability": 87, "capacity_kg": 280, "availability": true },
+    { "name": "ISKCON Prasad Kitchen", "location": "Yelahanka, Bengaluru", "distance_km": 1.5, "reliability": 93, "capacity_kg": 600, "availability": true },
+    { "name": "The Banyan", "location": "Banashankari, Bengaluru", "distance_km": 3.2, "reliability": 89, "capacity_kg": 320, "availability": true }
+  ]
+}
