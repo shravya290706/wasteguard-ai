@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "http://localhost:8000/api/chat"
+url = "http://localhost:10000/api/chat"
 data = {"message": "Hello, what is your status?"}
 headers = {"Content-Type": "application/json"}
 
