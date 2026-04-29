@@ -13,7 +13,7 @@ import LoginPage from './components/LoginPage'
 import Predictions from './components/Predictions'
 import CertificateGenerator from './components/CertificateGenerator'
 import Leaderboard from './components/Leaderboard'
-const API_BASE = "https://wasteguard-ai-hh4e.onrender.com";
+const API_BASE = import.meta.env.VITE_API_URL || "";
 
 const NAV = [
   { id: 'overview',     icon: '🏠',  label: 'Overview'       },

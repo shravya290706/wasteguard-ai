@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
-const API_BASE = "https://wasteguard-ai-hh4e.onrender.com";
+const API_BASE = import.meta.env.VITE_API_URL || "";
 
 const QUICK_PROMPTS = []
 

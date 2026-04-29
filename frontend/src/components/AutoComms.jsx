@@ -25,7 +25,7 @@ export default function AutoComms({ item, store, ngos = [], onClose }) {
     setUsedFallback(false)
     
     try {
-      const res = await fetch('/api/generate-message', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/generate-message`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

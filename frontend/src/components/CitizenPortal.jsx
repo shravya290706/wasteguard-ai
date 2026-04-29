@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { CyclicSelect } from '../utils/cyclicScroll.jsx'
-const API_BASE = "https://wasteguard-ai-hh4e.onrender.com";
+const API_BASE = import.meta.env.VITE_API_URL || "";
 
 const ISSUE_TYPES = ['Spoiled stock', 'Uncollected redistribution', 'Overstock not reported', 'Other']
 
