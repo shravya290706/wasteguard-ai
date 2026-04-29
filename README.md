@@ -46,8 +46,7 @@ cp .env.example .env
 
 ```bash
 cd backend
-uvicorn main:app --reload --port 10000
-```
+python -m uvicorn main:app --reload --port 8000```
 
 Backend runs at: http://localhost:10000  
 API docs at: http://localhost:10000/docs
