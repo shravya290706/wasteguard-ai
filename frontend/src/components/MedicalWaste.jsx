@@ -2,7 +2,7 @@ import { useState, useCallback, useRef } from 'react'
 import { CyclicSelect, CyclicList } from '../utils/cyclicScroll.jsx'
 import { BENGALURU_CENTER, getNearestCenters } from '../utils/disposalCenters'
 import NearestCenterMap from './NearestCenterMap'
-const API_BASE = "https://wasteguard-ai-hh4e.onrender.com";
+const API_BASE = import.meta.env.VITE_API_URL || "";
 
 const UNITS = ['units', 'tablets', 'capsules', 'ml', 'mg', 'vials', 'strips', 'bottles']
 const DEMO  = { medicine_name: 'Amoxicillin 500mg', expiry_date: '2025-12-01', quantity: '30', unit: 'capsules' }

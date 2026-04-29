@@ -39,7 +39,7 @@ export default function OfficerDashboard({ stores = [] }) {
   const generateReport = async () => {
     setLoading(true)
     try {
-      const res = await fetch('/api/city-report', { method: 'POST' })
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/city-report`, { method: 'POST' })
       const data = await res.json()
       setReport(data.report)
     } catch {
